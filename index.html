@@ -37,7 +37,11 @@
         .tag { font-size: 11px; color: var(--text-muted); background: var(--bg); padding: 4px 10px; border-radius: 4px; }
         .read-more { font-size: 13px; color: var(--accent); text-decoration: none; font-weight: 500; }
         .read-more:hover { color: var(--accent-hover); }
-        .footer { text-align: center; margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 13px; }
+        .sources { text-align: center; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+        .sources-label { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+        .sources-list { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .source-tag { font-size: 11px; color: var(--accent); background: rgba(212, 165, 116, 0.1); padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(212, 165, 116, 0.2); }
+        .footer { text-align: center; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 13px; }
         .footer a { color: var(--accent); text-decoration: none; }
         @media (max-width: 600px) { .container { padding: 48px 16px; } h1 { font-size: 24px; } .news-card { padding: 20px; } }
     </style>
@@ -87,6 +91,16 @@
                 <h2 class="card-title">Nothing CEO：智能手机应用将被 AI 代理取代</h2>
                 <p class="card-summary">Nothing 公司 CEO Carl Pei 预测智能手机应用将在未来消失，被 AI 代理取代。用户不再需要手动打开各类应用，AI 代理可直接完成订餐、安排行程等任务。</p>
                 <div class="card-footer"><div class="tags"><span class="tag">Nothing</span><span class="tag">AI代理</span></div><a href="https://techcrunch.com/2026/03/18/nothing-ceo-carl-pei-says-smartphone-apps-will-disappear-as-ai-agents-take-their-place/" target="_blank" class="read-more">原文 →</a></div>
+            </div>
+        </div>
+        <div class="sources">
+            <p class="sources-label">信息来源</p>
+            <div class="sources-list">
+                <span class="source-tag">The Verge</span>
+                <span class="source-tag">36氪</span>
+                <span class="source-tag">虎嗅</span>
+                <span class="source-tag">TechCrunch</span>
+                <span class="source-tag">MIT Review</span>
             </div>
         </div>
         <div class="footer">
