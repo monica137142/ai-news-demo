@@ -3,83 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 资讯助手 - 2026年3月19日</title>
+    <title>AI 资讯助手</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif; background: #FAFBFC; color: #1D1D1F; line-height: 1.6; min-height: 100vh; }
-        .container { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
-        header { text-align: center; margin-bottom: 48px; }
-        h1 { font-size: 40px; font-weight: 600; color: #1D1D1F; margin-bottom: 8px; letter-spacing: -1px; background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .date { font-size: 17px; color: #86868B; font-weight: 400; }
-        .subtitle { font-size: 15px; color: #AEAEB2; margin-top: 12px; }
-        .source-note { display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 122, 255, 0.08); color: #007AFF; font-size: 13px; padding: 8px 16px; border-radius: 20px; margin-top: 20px; font-weight: 500; }
-        .news-grid { display: flex; flex-direction: column; gap: 20px; }
-        .news-card { background: #FFFFFF; border-radius: 16px; padding: 28px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); border: 1px solid rgba(0, 0, 0, 0.04); cursor: pointer; position: relative; overflow: hidden; }
-        .news-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, #007AFF 0%, #5856D6 100%); opacity: 0; transition: opacity 0.3s ease; }
-        .news-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0, 122, 255, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08); }
-        .news-card:hover::before { opacity: 1; }
-        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-        .source { font-size: 12px; font-weight: 600; color: #007AFF; background: rgba(0, 122, 255, 0.1); padding: 5px 12px; border-radius: 6px; letter-spacing: 0.3px; }
-        .time { font-size: 13px; color: #AEAEB2; }
-        .card-title { font-size: 20px; font-weight: 600; color: #1D1D1F; margin-bottom: 14px; line-height: 1.4; letter-spacing: -0.3px; }
-        .card-summary { font-size: 15px; color: #515154; margin-bottom: 20px; line-height: 1.7; }
-        .card-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { font-size: 12px; color: #5856D6; background: rgba(88, 86, 214, 0.08); padding: 5px 12px; border-radius: 6px; font-weight: 500; }
-        .read-more { font-size: 14px; color: #007AFF; text-decoration: none; display: flex; align-items: center; gap: 6px; font-weight: 500; transition: gap 0.2s ease; }
-        .read-more:hover { gap: 10px; }
-        .footer-tip { text-align: center; margin-top: 48px; padding-top: 32px; border-top: 1px solid #E5E5E7; color: #86868B; font-size: 14px; }
-        .footer-tip p { margin: 6px 0; }
-        @media (max-width: 640px) { .container { padding: 40px 16px; } h1 { font-size: 32px; } .news-card { padding: 22px; } .card-title { font-size: 18px; } .card-footer { flex-direction: column; align-items: flex-start; } }
+        :root {
+            --bg: #F5F2EB;
+            --bg-card: #FFFDF8;
+            --text: #2D2A26;
+            --text-muted: #6B6560;
+            --accent: #D4A574;
+            --accent-hover: #C4956A;
+            --border: #E8E4DC;
+        }
+        body { font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+        .container { max-width: 680px; margin: 0 auto; padding: 80px 24px; }
+        header { text-align: center; margin-bottom: 56px; }
+        .logo { font-size: 48px; margin-bottom: 16px; }
+        h1 { font-size: 28px; font-weight: 600; color: var(--text); margin-bottom: 8px; letter-spacing: -0.5px; }
+        .date { font-size: 15px; color: var(--text-muted); }
+        .subtitle { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
+        .disclaimer { font-size: 12px; color: var(--accent); margin-top: 12px; padding: 8px 16px; background: rgba(212, 165, 116, 0.1); border-radius: 8px; display: inline-block; }
+        .news-grid { display: flex; flex-direction: column; gap: 16px; }
+        .news-card { background: var(--bg-card); border-radius: 12px; padding: 24px; border: 1px solid var(--border); transition: all 0.2s ease; cursor: pointer; }
+        .news-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(45, 42, 38, 0.06); }
+        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .source { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; }
+        .time { font-size: 12px; color: var(--text-muted); }
+        .card-title { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 10px; line-height: 1.4; }
+        .card-summary { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+        .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+        .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+        .tag { font-size: 11px; color: var(--text-muted); background: var(--bg); padding: 4px 10px; border-radius: 4px; }
+        .read-more { font-size: 13px; color: var(--accent); text-decoration: none; font-weight: 500; }
+        .read-more:hover { color: var(--accent-hover); }
+        .footer { text-align: center; margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 13px; }
+        .footer a { color: var(--accent); text-decoration: none; }
+        @media (max-width: 600px) { .container { padding: 48px 16px; } h1 { font-size: 24px; } .news-card { padding: 20px; } }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
+            <div class="logo">🧠</div>
             <h1>AI 资讯助手</h1>
             <p class="date">2026年3月19日</p>
             <p class="subtitle">为你精选每日最值得关注的 AI 行业资讯</p>
-            <span class="source-note">来源：The Verge · 36氪 · 虎嗅 · TechCrunch · MIT</span>
+            <p class="disclaimer">⚠️ 内容由AI聚合抓取整理，整理过程可能存在误差，仅供参考</p>
         </header>
         <div class="news-grid">
             <div class="news-card" onclick="window.open('https://www.theverge.com/ai-artificial-intelligence/896878/ai-did-not-cure-this-dogs-cancer', '_blank')">
                 <div class="card-header"><span class="source">The Verge</span><span class="time">今天</span></div>
                 <h2 class="card-title">ChatGPT 未能治愈狗的癌症：AI 医疗的边界</h2>
                 <p class="card-summary">本文揭示 ChatGPT 在医疗领域的局限性——虽能提供大量医学信息，但缺乏真正的临床诊断能力，无法进行实体诊疗。提醒公众不应过度依赖 AI 进行关键医疗决策，需与专业医护人员配合。</p>
-                <div class="card-footer"><div class="tags"><span class="tag">ChatGPT</span><span class="tag">医疗AI</span><span class="tag">监管</span></div><a href="https://www.theverge.com/ai-artificial-intelligence/896878/ai-did-not-cure-this-dogs-cancer" target="_blank" class="read-more">查看原文 →</a></div>
+                <div class="card-footer"><div class="tags"><span class="tag">ChatGPT</span><span class="tag">医疗AI</span></div><a href="https://www.theverge.com/ai-artificial-intelligence/896878/ai-did-not-cure-this-dogs-cancer" target="_blank" class="read-more">原文 →</a></div>
             </div>
             <div class="news-card" onclick="window.open('https://36kr.com/p/3729636200133124.html', '_blank')">
                 <div class="card-header"><span class="source">36氪</span><span class="time">今天</span></div>
                 <h2 class="card-title">全网猜了一周 DeepSeek V4，结果是小米干的</h2>
                 <p class="card-summary">上周OpenRouter上两个匿名模型被误认为DeepSeek V4，今日小米官宣认领MiMo-V2系列。MiMo-V2-Pro参数超1万亿，AIME 2025数学基准94.1%，API定价仅为竞品1/5。</p>
-                <div class="card-footer"><div class="tags"><span class="tag">小米</span><span class="tag">MiMo</span><span class="tag">大模型</span></div><a href="https://36kr.com/p/3729636200133124.html" target="_blank" class="read-more">查看原文 →</a></div>
+                <div class="card-footer"><div class="tags"><span class="tag">小米</span><span class="tag">MiMo</span></div><a href="https://36kr.com/p/3729636200133124.html" target="_blank" class="read-more">原文 →</a></div>
             </div>
             <div class="news-card" onclick="window.open('https://www.huxiu.com/article/4843560.html', '_blank')">
                 <div class="card-header"><span class="source">虎嗅</span><span class="time">今天</span></div>
                 <h2 class="card-title">Anthropic 完成 300 亿美元融资，估值达 3800 亿</h2>
-                <p class="card-summary">Anthropic 完成 G 轮融资 300 亿美元，估值 3800 亿美元，年化收入 140 亿美元。Claude 已部署至五角大楼和情报机构，SBF 早期投资 5 亿美元，EA 运动对 AI 投资影响深远。</p>
-                <div class="card-footer"><div class="tags"><span class="tag">Anthropic</span><span class="tag">融资</span><span class="tag">Claude</span></div><a href="https://www.huxiu.com/article/4843560.html" target="_blank" class="read-more">查看原文 →</a></div>
+                <p class="card-summary">Anthropic 完成 G 轮融资 300 亿美元，估值 3800 亿美元，年化收入 140 亿美元。Claude 已部署至五角大楼和情报机构，SBF 早期投资 5 亿美元。</p>
+                <div class="card-footer"><div class="tags"><span class="tag">Anthropic</span><span class="tag">融资</span></div><a href="https://www.huxiu.com/article/4843560.html" target="_blank" class="read-more">原文 →</a></div>
             </div>
             <div class="news-card" onclick="window.open('https://www.huxiu.com/article/4843568.html', '_blank')">
                 <div class="card-header"><span class="source">虎嗅</span><span class="time">今天</span></div>
                 <h2 class="card-title">GTC 2026：机器人技术新趋势减少语言中间层</h2>
-                <p class="card-summary">英伟达 GTC 2026 揭示机器人技术新趋势：减少对语言中间层依赖，转向感知-动作直接映射。响应延迟降低 4 倍至 190 毫秒。行业影响：从"理解优先"转向"控制优先"。</p>
-                <div class="card-footer"><div class="tags"><span class="tag">英伟达</span><span class="tag">GTC</span><span class="tag">机器人</span></div><a href="https://www.huxiu.com/article/4843568.html" target="_blank" class="read-more">查看原文 →</a></div>
+                <p class="card-summary">英伟达 GTC 2026 揭示机器人技术新趋势：减少对语言中间层依赖，转向感知-动作直接映射。响应延迟降低 4 倍至 190 毫秒。</p>
+                <div class="card-footer"><div class="tags"><span class="tag">英伟达</span><span class="tag">GTC</span></div><a href="https://www.huxiu.com/article/4843568.html" target="_blank" class="read-more">原文 →</a></div>
             </div>
             <div class="news-card" onclick="window.open('https://www.technologyreview.com/2026/03/16/1134287/securing-digital-assets-against-future-threats/', '_blank')">
                 <div class="card-header"><span class="source">MIT</span><span class="time">今天</span></div>
                 <h2 class="card-title">AI 与量子计算重塑数字资产安全</h2>
                 <p class="card-summary">AI 降低攻击门槛，攻击者利用 AI 创建恶意工具。量子计算"现窃取、后解密"策略已出现。数字资产所有者需采用后量子密码学应对未来威胁。</p>
-                <div class="card-footer"><div class="tags"><span class="tag">网络安全</span><span class="tag">量子计算</span><span class="tag">后量子密码学</span></div><a href="https://www.technologyreview.com/2026/03/16/1134287/securing-digital-assets-against-future-threats/" target="_blank" class="read-more">查看原文 →</a></div>
+                <div class="card-footer"><div class="tags"><span class="tag">网络安全</span><span class="tag">量子</span></div><a href="https://www.technologyreview.com/2026/03/16/1134287/securing-digital-assets-against-future-threats/" target="_blank" class="read-more">原文 →</a></div>
             </div>
             <div class="news-card" onclick="window.open('https://techcrunch.com/2026/03/18/nothing-ceo-carl-pei-says-smartphone-apps-will-disappear-as-ai-agents-take-their-place/', '_blank')">
                 <div class="card-header"><span class="source">TechCrunch</span><span class="time">今天</span></div>
                 <h2 class="card-title">Nothing CEO：智能手机应用将被 AI 代理取代</h2>
                 <p class="card-summary">Nothing 公司 CEO Carl Pei 预测智能手机应用将在未来消失，被 AI 代理取代。用户不再需要手动打开各类应用，AI 代理可直接完成订餐、安排行程等任务。</p>
-                <div class="card-footer"><div class="tags"><span class="tag">Nothing</span><span class="tag">AI代理</span><span class="tag">移动应用</span></div><a href="https://techcrunch.com/2026/03/18/nothing-ceo-carl-pei-says-smartphone-apps-will-disappear-as-ai-agents-take-their-place/" target="_blank" class="read-more">查看原文 →</a></div>
+                <div class="card-footer"><div class="tags"><span class="tag">Nothing</span><span class="tag">AI代理</span></div><a href="https://techcrunch.com/2026/03/18/nothing-ceo-carl-pei-says-smartphone-apps-will-disappear-as-ai-agents-take-their-place/" target="_blank" class="read-more">原文 →</a></div>
             </div>
         </div>
-        <div class="footer-tip"><p>📌 点击卡片可直接查看原文</p><p>🔄 如需最新资讯，请随时告诉我</p></div>
+        <div class="footer">
+            <p>如需最新资讯，请联系 @丁曼索</p>
+        </div>
     </div>
 </body>
 </html>
