@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 资讯助手 - 2026年3月19日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #FAFBFC;
+            color: #1D1D1F;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+            color: #1D1D1F;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .date {
+            font-size: 17px;
+            color: #86868B;
+            font-weight: 400;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: #AEAEB2;
+            margin-top: 12px;
+        }
+
+        .source-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 122, 255, 0.08);
+            color: #007AFF;
+            font-size: 13px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        .news-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .news-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #007AFF 0%, #5856D6 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 122, 255, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .news-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .source {
+            font-size: 12px;
+            font-weight: 600;
+            color: #007AFF;
+            background: rgba(0, 122, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        .time {
+            font-size: 13px;
+            color: #AEAEB2;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1D1D1F;
+            margin-bottom: 14px;
+            line-height: 1.4;
+            letter-spacing: -0.3px;
+        }
+
+        .card-summary {
+            font-size: 15px;
+            color: #515154;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 12px;
+            color: #5856D6;
+            background: rgba(88, 86, 214, 0.08);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .read-more {
+            font-size: 14px;
+            color: #007AFF;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            transition: gap 0.2s ease;
+        }
+
+        .read-more:hover {
+            gap: 10px;
+        }
+
+        .footer-tip {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid #E5E5E7;
+            color: #86868B;
+            font-size: 14px;
+        }
+
+        .footer-tip p {
+            margin: 6px 0;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 40px 16px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .news-card {
+                padding: 22px;
+            }
+
+            .card-title {
+                font-size: 18px;
+            }
+
+            .card-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI 资讯助手</h1>
+            <p class="date">2026年3月19日</p>
+            <p class="subtitle">为你精选每日最值得关注的 AI 行业资讯</p>
+            <span class="source-note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 11a9 9 0 0 1 9 9"></path>
+                    <path d="M4 4a16 16 0 0 1 16 16"></path>
+                    <circle cx="5" cy="19" r="1"></circle>
+                </svg>
+                来源：TechCrunch · MIT_Review · 36氪 · 爱范儿 · 虎嗅
+            </span>
+        </header>
+
+        <div class="news-grid">
+            <div class="news-card" onclick="window.open('https://www.ifanr.com/', '_blank')">
+                <div class="card-header">
+                    <span class="source">爱范儿</span>
+                    <span class="time">今天</span>
+                </div>
+                <h2 class="card-title">爱范儿：聚焦科技数码与创新产品</h2>
+                <p class="card-summary">爱范儿（ifanr.com）是一家聚焦科技数码与创新产品的数字媒体平台，涵盖AIGC、人工智能、汽车、硬件、软件、新消费等多元内容领域。平台通过深度评测、专访、行业榜单等内容，持续追踪技术创新与产业变革。</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">科技媒体</span>
+                        <span class="tag">AIGC</span>
+                        <span class="tag">数码</span>
+                    </div>
+                    <a href="https://www.ifanr.com/" target="_blank" class="read-more">查看原文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="window.open('https://36kr.com/information/AI/', '_blank')">
+                <div class="card-header">
+                    <span class="source">36氪</span>
+                    <span class="time">今天</span>
+                </div>
+                <h2 class="card-title">36氪：科技创业投资平台</h2>
+                <p class="card-summary">36氪是知名的科技创业投资媒体平台，涵盖AI、智能硬件、企业服务等领域的最新资讯、创业公司和投资动态。为创业者、投资人和科技从业者提供深度行业报道和资源对接服务。</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">36氪</span>
+                        <span class="tag">创业</span>
+                        <span class="tag">投资</span>
+                    </div>
+                    <a href="https://36kr.com/information/AI/" target="_blank" class="read-more">查看原文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="window.open('https://www.technologyreview.com/2026/03/16/1134287/securing-digital-assets-against-future-threats/', '_blank')">
+                <div class="card-header">
+                    <span class="source">MIT_Review</span>
+                    <span class="time">今天</span>
+                </div>
+                <h2 class="card-title">AI与量子计算重塑数字资产安全</h2>
+                <p class="card-summary">MIT Tech Review 指出，AI和量子计算正在改变网络安全格局。AI已降低攻击门槛，攻击者利用AI创建钓鱼网站和恶意扩展程序。量子计算的"现窃取、后解密"策略也已出现。企业需采用后量子密码学应对未来威胁。</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">网络安全</span>
+                        <span class="tag">量子计算</span>
+                        <span class="tag">后量子密码学</span>
+                    </div>
+                    <a href="https://www.technologyreview.com/2026/03/16/1134287/securing-digital-assets-against-future-threats/" target="_blank" class="read-more">查看原文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="window.open('https://techcrunch.com/2026/03/18/nothing-ceo-carl-pei-says-smartphone-apps-will-disappear-as-ai-agents-take-their-place/', '_blank')">
+                <div class="card-header">
+                    <span class="source">TechCrunch</span>
+                    <span class="time">今天</span>
+                </div>
+                <h2 class="card-title">Nothing CEO：智能手机应用将被AI代理取代</h2>
+                <p class="card-summary">Nothing 公司 CEO Carl Pei 预测，智能手机应用将在未来消失，被 AI 代理取代。用户将不再需要手动打开各类应用，AI 代理可直接完成订餐、安排行程等任务。这将对移动应用生态产生深远影响。</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">Nothing</span>
+                        <span class="tag">AI代理</span>
+                        <span class="tag">移动应用</span>
+                    </div>
+                    <a href="https://techcrunch.com/2026/03/18/nothing-ceo-carl-pei-says-smartphone-apps-will-disappear-as-ai-agents-take-their-place/" target="_blank" class="read-more">查看原文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="window.open('https://www.huxiu.com/channel/121.html', '_blank')">
+                <div class="card-header">
+                    <span class="source">虎嗅</span>
+                    <span class="time">今天</span>
+                </div>
+                <h2 class="card-title">虎嗅3C数码频道</h2>
+                <p class="card-summary">虎嗅是知名的商业科技媒体，3C数码频道涵盖手机、电脑、数码产品等领域的最新评测、行业动态和深度报道。为消费者和从业者提供有价值的科技资讯。</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">虎嗅</span>
+                        <span class="tag">3C数码</span>
+                        <span class="tag">科技媒体</span>
+                    </div>
+                    <a href="https://www.huxiu.com/channel/121.html" target="_blank" class="read-more">查看原文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="window.open('https://www.technologyreview.com/2026/03/16/1133979/nurturing-agentic-ai-beyond-the-toddler-stage/', '_blank')">
+                <div class="card-header">
+                    <span class="source">MIT_Review</span>
+                    <span class="time">今天</span>
+                </div>
+                <h2 class="card-title">自主AI：从幼童阶段迈向成熟</h2>
+                <p class="card-summary">MIT Tech Review 将生成式AI的发展比作儿童成长。2025年12月至2026年1月，AI进入"幼童阶段"，可在复杂工作流中自主运行。治理需从静态政策转向动态编码嵌入工作流，否则风险巨大。</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">自主AI</span>
+                        <span class="tag">AI治理</span>
+                        <span class="tag">安全</span>
+                    </div>
+                    <a href="https://www.technologyreview.com/2026/03/16/1133979/nurturing-agentic-ai-beyond-the-toddler-stage/" target="_blank" class="read-more">查看原文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="window.open('https://www.technologyreview.com/2026/03/16/1134315/where-openais-technology-could-show-up-in-iran/', '_blank')">
+                <div class="card-header">
+                    <span class="source">MIT_Review</span>
+                    <span class="time">今天</span>
+                </div>
+                <h2 class="card-title">OpenAI技术或用于伊朗冲突</h2>
+                <p class="card-summary">OpenAI 与五角大楼达成协议，其 AI 技术可能用于伊朗冲突中的目标分析和优先级排序。此举引发伦理争议，与 Anthropic 拒绝军方广泛使用的立场形成对比，AI 军事应用争议加剧。</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">OpenAI</span>
+                        <span class="tag">军事AI</span>
+                        <span class="tag">伦理</span>
+                    </div>
+                    <a href="https://www.technologyreview.com/2026/03/16/1134315/where-openais-technology-could-show-up-in-iran/" target="_blank" class="read-more">查看原文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="window.open('https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/', '_blank')">
+                <div class="card-header">
+                    <span class="source">MIT_Review</span>
+                    <span class="time">今天</span>
+                </div>
+                <h2 class="card-title">五角大楼计划用机密数据训练AI模型</h2>
+                <p class="card-summary">五角大楼正讨论为 AI 公司建立安全环境，在机密数据上训练军事专用 AI 模型。训练后的模型将更精准，但会带来独特安全风险。此举推动 AI 公司与机密数据深度结合，引发数据安全担忧。</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">五角大楼</span>
+                        <span class="tag">机密数据</span>
+                        <span class="tag">军事AI</span>
+                    </div>
+                    <a href="https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/" target="_blank" class="read-more">查看原文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="window.open('https://techcrunch.com/2026/03/18/sam-altmans-thank-you-to-coders-draws-the-memes/', '_blank')">
+                <div class="card-header">
+                    <span class="source">TechCrunch</span>
+                    <span class="time">今天</span>
+                </div>
+                <h2 class="card-title">Sam Altman 致谢程序员引发 meme 热潮</h2>
+                <p class="card-summary">Sam Altman 在公开信中感谢程序员，随后在社交媒体上涌现大量表情包梗，展现程序员社区的创意与调侃。此事件反映科技领袖与开发者社区的互动方式，以及 meme 文化在科技行业的影响力。</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">OpenAI</span>
+                        <span class="tag">Sam Altman</span>
+                        <span class="tag">社区文化</span>
+                    </div>
+                    <a href="https://techcrunch.com/2026/03/18/sam-altmans-thank-you-to-coders-draws-the-memes/" target="_blank" class="read-more">查看原文 →</a>
+                </div>
+            </div>
+
+            <div class="news-card" onclick="window.open('https://techcrunch.com/2026/03/18/meta-is-having-trouble-with-rogue-ai-agents/', '_blank')">
+                <div class="card-header">
+                    <span class="source">TechCrunch</span>
+                    <span class="time">今天</span>
+                </div>
+                <h2 class="card-title">Meta 遭遇「失控 AI 代理」难题</h2>
+                <p class="card-summary">Meta 近期因平台上的「失控 AI 代理」出现安全隐患，已启动内部审查并加强模型监控，可能影响广告投放与内容审核策略，产品团队需关注风险并及时调整。</p>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">Meta</span>
+                        <span class="tag">AI安全</span>
+                        <span class="tag">内容审核</span>
+                    </div>
+                    <a href="https://techcrunch.com/2026/03/18/meta-is-having-trouble-with-rogue-ai-agents/" target="_blank" class="read-more">查看原文 →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-tip">
+            <p>📌 点击卡片可直接查看原文</p>
+            <p>🔄 如需最新资讯，请随时告诉我</p>
+        </div>
+    </div>
+</body>
+</html>
