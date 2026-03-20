@@ -7,14 +7,14 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>AI 资讯助手</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --bg: #F5F2EB; --bg-card: #FFFDF8; --text: #2D2A26; --text-muted: #6B6560; --accent: #D4A574; --accent-hover: #C4956A; --border: #E8E4DC; }
         body { font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
         .container { max-width: 680px; margin: 0 auto; padding: 80px 24px; }
         header { text-align: center; margin-bottom: 56px; }
-        .logo { font-size: 48px; margin-bottom: 16px; }
+        .logo { width: 48px; height: 48px; margin-bottom: 16px; }
         h1 { font-size: 28px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5px; display: inline-flex; align-items: center; gap: 8px; }
         .beta-tag { font-size: 11px; background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; font-weight: 500; }
         .date { font-size: 15px; color: var(--text-muted); }
@@ -40,7 +40,7 @@
 <body>
     <div class="container">
         <header>
-            <div class="logo">🧠</div>
+            <img class="logo" src="favicon.svg" alt="AI">
             <h1>AI 资讯助手<span class="beta-tag">Beta</span></h1>
             <p class="date">2026年03月20日</p>
             <p class="subtitle">为你精选每日最值得关注的 AI 行业资讯</p>
@@ -110,7 +110,7 @@
         </div>
         <div class="sources">
             <p class="sources-label">信息来源</p>
-            <div class="sources-list"><span class="source-tag">虎嗅网</span><span class="source-tag">36氪</span><span class="source-tag">TechCrunch</span><span class="source-tag">MIT_Review</span>
+            <div class="sources-list"><span class="source-tag">MIT_Review</span><span class="source-tag">虎嗅网</span><span class="source-tag">TechCrunch</span><span class="source-tag">36氪</span>
             </div>
         </div>
         <div class="footer">
