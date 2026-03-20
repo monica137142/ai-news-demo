@@ -19,8 +19,11 @@
         .title-wrapper { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
         h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; }
         .beta-tag { font-size: 11px; background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; font-weight: 500; }
+        .subtitle { font-size: 18px; color: var(--text-muted); margin-top: 12px; }
+        .typing-text { color: var(--accent); font-weight: 600; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .cursor { display: inline-block; width: 2px; height: 1em; background: var(--accent); margin-left: 2px; animation: blink 1s infinite; }
         .date { font-size: 15px; color: var(--text-muted); margin-top: 8px; }
-        .subtitle { font-size: 14px; color: var(--text-muted); margin-top: 8px; }
         .disclaimer { font-size: 12px; color: var(--accent); margin-top: 12px; padding: 8px 16px; background: rgba(212, 165, 116, 0.1); border-radius: 8px; display: inline-block; }
         .news-grid { display: flex; flex-direction: column; gap: 16px; }
         .news-card { background: var(--bg-card); border-radius: 12px; padding: 24px; border: 1px solid var(--border); transition: all 0.2s ease; cursor: pointer; }
@@ -50,7 +53,9 @@
                 <span class="beta-tag">Beta</span>
             </div>
             <p class="date">2026年03月20日</p>
-            <p class="subtitle">为你精选每日最值得关注的 AI 行业资讯</p>
+            <p class="subtitle">
+                为你精选每日最值得关注的<span id="typing" class="typing-text"></span><span class="cursor"></span>
+            </p>
             <p class="disclaimer">⚠️ 内容由AI聚合抓取整理，整理过程可能存在误差，仅供参考</p>
         </header>
         <div class="news-grid">
@@ -117,12 +122,25 @@
         </div>
         <div class="sources">
             <p class="sources-label">信息来源</p>
-            <div class="sources-list"><span class="source-tag">MIT_Review</span><span class="source-tag">36氪</span><span class="source-tag">虎嗅网</span><span class="source-tag">TechCrunch</span>
+            <div class="sources-list"><span class="source-tag">TechCrunch</span><span class="source-tag">MIT_Review</span><span class="source-tag">36氪</span><span class="source-tag">虎嗅网</span>
             </div>
         </div>
         <div class="footer">
             <p>如有疑问，请联系 dingmansuo@qiyi.com</p>
         </div>
     </div>
+    <script>
+        const text = "AI行业资讯";
+        const element = document.getElementById("typing");
+        let index = 0;
+        function type() {
+            if (index < text.length) {
+                element.textContent += text.charAt(index);
+                index++;
+                setTimeout(type, 150);
+            }
+        }
+        setTimeout(type, 500);
+    </script>
 </body>
 </html>
