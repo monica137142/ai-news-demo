@@ -20,9 +20,9 @@
         h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; }
         .beta-tag { font-size: 11px; background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; font-weight: 500; }
         .subtitle { font-size: 18px; color: var(--text-muted); margin-top: 12px; }
-        .typing-text { color: var(--accent); font-weight: 600; }
+        .typing-text { color: var(--text-muted); }
         @keyframes blink { 50% { opacity: 0; } }
-        .cursor { display: inline-block; width: 2px; height: 1em; background: var(--accent); margin-left: 2px; animation: blink 1s infinite; }
+        .cursor { display: inline-block; width: 2px; height: 1.2em; background: var(--text-muted); margin-left: 2px; vertical-align: middle; animation: blink 1s infinite; }
         .date { font-size: 15px; color: var(--text-muted); margin-top: 8px; }
         .disclaimer { font-size: 12px; color: var(--accent); margin-top: 12px; padding: 8px 16px; background: rgba(212, 165, 116, 0.1); border-radius: 8px; display: inline-block; }
         .news-grid { display: flex; flex-direction: column; gap: 16px; }
@@ -122,7 +122,7 @@
         </div>
         <div class="sources">
             <p class="sources-label">信息来源</p>
-            <div class="sources-list"><span class="source-tag">TechCrunch</span><span class="source-tag">MIT_Review</span><span class="source-tag">36氪</span><span class="source-tag">虎嗅网</span>
+            <div class="sources-list"><span class="source-tag">虎嗅网</span><span class="source-tag">TechCrunch</span><span class="source-tag">MIT_Review</span><span class="source-tag">36氪</span>
             </div>
         </div>
         <div class="footer">
@@ -133,11 +133,26 @@
         const text = "AI行业资讯";
         const element = document.getElementById("typing");
         let index = 0;
+        let isDeleting = false;
+        
         function type() {
-            if (index < text.length) {
+            if (!isDeleting) {
                 element.textContent += text.charAt(index);
                 index++;
-                setTimeout(type, 150);
+                if (index === text.length) {
+                    setTimeout(() => { isDeleting = true; type(); }, 2000);
+                } else {
+                    setTimeout(type, 150);
+                }
+            } else {
+                element.textContent = element.textContent.slice(0, -1);
+                if (element.textContent.length === 0) {
+                    isDeleting = false;
+                    index = 0;
+                    setTimeout(type, 500);
+                } else {
+                    setTimeout(type, 100);
+                }
             }
         }
         setTimeout(type, 500);
