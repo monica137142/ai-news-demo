@@ -17,12 +17,13 @@
         .logo-wrapper { text-align: center; margin-bottom: 16px; }
         .logo { width: 48px; height: 48px; display: inline-block; }
         .title-wrapper { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
-        h1 { font-size: 28px; font-weight: 400; letter-spacing: -0.5px; }
+        h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; }
         .beta-tag { font-size: 11px; background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; font-weight: 500; }
-        .subtitle { font-size: 18px; color: var(--text-muted); margin-top: 12px; font-weight: 600; }
+        .subtitle { font-size: 18px; color: var(--text-muted); margin-top: 12px; font-weight: 400; }
         .typing-text { color: var(--text-muted); }
         @keyframes blink { 50% { opacity: 0; } }
         .cursor { display: inline-block; width: 2px; height: 1.2em; background: var(--text-muted); margin-left: 2px; vertical-align: middle; animation: blink 1s infinite; }
+        .cursor.hidden { display: none; }
         .date { font-size: 15px; color: var(--text-muted); margin-top: 8px; }
         .disclaimer { font-size: 12px; color: var(--accent); margin-top: 12px; padding: 8px 16px; background: rgba(212, 165, 116, 0.1); border-radius: 8px; display: inline-block; }
         .news-grid { display: flex; flex-direction: column; gap: 16px; }
@@ -122,7 +123,7 @@
         </div>
         <div class="sources">
             <p class="sources-label">信息来源</p>
-            <div class="sources-list"><span class="source-tag">36氪</span><span class="source-tag">TechCrunch</span><span class="source-tag">MIT_Review</span><span class="source-tag">虎嗅网</span>
+            <div class="sources-list"><span class="source-tag">虎嗅网</span><span class="source-tag">TechCrunch</span><span class="source-tag">36氪</span><span class="source-tag">MIT_Review</span>
             </div>
         </div>
         <div class="footer">
@@ -141,13 +142,19 @@
                 index++;
                 setTimeout(type, 150);
             } else {
-                setTimeout(clearText, 7000);
+                setTimeout(hideCursor, 7000);
             }
+        }
+        
+        function hideCursor() {
+            cursor.classList.add("hidden");
+            setTimeout(clearText, 100);
         }
         
         function clearText() {
             element.textContent = "";
             index = 0;
+            cursor.classList.remove("hidden");
             setTimeout(type, 500);
         }
         
